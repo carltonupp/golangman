@@ -1,12 +1,21 @@
 package main
 
-import "fmt"
+import (
+	"net/http"
 
-func Hello(name string) string {
-	result := "Hello " + name
-	return result
-}
+	"github.com/gin-gonic/gin"
+)
 
 func main() {
-	fmt.Println(Hello("dictionary"))
+	r := gin.Default()
+
+	r.GET("/api/word", GetWordHandler)
+
+	r.Run()
+}
+
+func GetWordHandler(c *gin.Context) {
+	c.JSON(http.StatusOK, gin.H{
+		"word": "example",
+	})
 }
