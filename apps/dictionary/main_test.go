@@ -18,8 +18,8 @@ func SetUpRouter() *gin.Engine {
 func TestGetWordHandler(t *testing.T) {
 	mockResponse := `{"word":"example"}`
 	r := SetUpRouter()
-	r.GET("/", GetWordHandler)
-	req, _ := http.NewRequest("GET", "/", nil)
+	r.GET("/api/word", GetWordHandler)
+	req, _ := http.NewRequest("GET", "/api/word", nil)
 	w := httptest.NewRecorder()
 	r.ServeHTTP(w, req)
 
